@@ -1,0 +1,20 @@
+Ch.1 What Can Go Wrong
+
+general overview of the book, nothign special
+
+1. how the data was gather should be seperate from how it should be stored.
+2. brief overview on normal form (without mentioning the jargon)
+3. database shouldn't be designed to serve the requirement of a single report,
+    report requirement change all the time. Instead it should design according to the data itself.
+
+Ch.2 Guided Tour of the Development Process
+1. The important thing is to understand the data that are going to support task
+and other likely task, aka "data indepednence"
+2. define real world problem statment using UML
+3. A table in database is actually a "class" object in software engineering,
+    with each "column"/"field" as "attribute"/"properties". There is no "method" to a table
+    since it is mainly for data storage.
+4. Hence each table should relate to just one thing, and do it exceptionally well.
+    just like a class object.
+5. relationships is the way that these class interact with each other. this could be zero / one / many,
+    depending on the nature of the relationship.
