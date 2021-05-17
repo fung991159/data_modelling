@@ -8,6 +8,7 @@ general overview of the book, nothign special
     report requirement change all the time. Instead it should design according to the data itself.
 
 Ch.2 Guided Tour of the Development Process
+
 1. The important thing is to understand the data that are going to support task
 and other likely task, aka "data indepednence"
 2. define real world problem statment using UML
@@ -18,3 +19,7 @@ and other likely task, aka "data indepednence"
     just like a class object.
 5. relationships is the way that these class interact with each other. this could be zero / one / many,
     depending on the nature of the relationship.
+
+Ch.3 Initial Requirements and Use Cases
+
+1. 
