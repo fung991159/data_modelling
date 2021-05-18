@@ -22,4 +22,22 @@ and other likely task, aka "data indepednence"
 
 Ch.3 Initial Requirements and Use Cases
 
-1. 
+1. this chapter is on more qualitative things, but I like how the author on understanding
+    the problem first, implementing later
+2. it is vitally important to know what the data model need to provide, because it decide
+    the complexity of the data model and how to implement it
+3. Not everything could be automated should be automated. Some task is better to have human 
+    involvement
+4. Scope a problem as small and tightly defined as possible in early stage, so it isn't too difficult 
+    to expand later when required. i.e Don't boil the entire ocean!
+5. think of the different use case, usually it involve input (user input?), output (report?).
+
+The exercise for this chapter is to understand the problem statment and design a solution for it.
+1. "dim_student" and "dim_date" are the dimension tables that store info relate to studnet and whether the day 
+    is sport days. "fct_attendence" is the fact table that actually store the student attendence record.
+2. Use Case (input): Sport teacher can input whether a studnet attend class on a given day.
+3. Use Case (event): if the day is a sport day and student has the status of is_school_team. Then teacher
+    can find substitute student easily.
+4. Use Case (report): school can easily get total number of absent of each student easily
+    counting attendance group by student_id
+
