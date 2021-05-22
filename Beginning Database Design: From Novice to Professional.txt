@@ -73,3 +73,40 @@ Which is generally a fact. But it is missing a intermediate class that store tha
 
 Exercise 4-3
 THis is rather easy. Another history table intermediate class need to be created.
+
+Ch.5 Developing a Data Model
+1. there is no "correct" data model, but one that meet its scope
+2. information can be represented either as an attribute in exisitng class or a whole new class.
+    Create a new class if:
+    a. we want to summarize by this information
+    b. if this information is extendable, i.e. adding new related attirbutes
+3. it is best to avoid storing redundant info on different class. because:
+    a. it is prone to manual update error
+    b. it allows for more than one "route" to access the same data, sometime it 
+    can be inconsistent.
+4. "fan trap": class with two relatinships with many cardinality at both outside ends.
+        an example of "Employee"-"Division"-"Group" was given. A division can have multiple
+        employees, at the same time a division can also be in multiple group. 
+        There is no way one can tell a employee belongs to which group.
+5. "chasm trap": when a record cannot be chained from Class A to B then C. Because
+    a record doesn't present in B, the chain is "broken"
+6. self relatioship: when each record in the class is related to each other (self join scenario)
+7. when information is depend on objects of more than two classes, it makes 
+    sense to introduce a new class
+
+Exercise 5-1
+usually splitting data model into two other class, location and manager class.
+
+Exercise 5-2
+basically it should be two relationship between two class, one for staff providing course,
+the other is staff is supervisor for course
+
+Exercsise 5-3
+a marriages happens between two person, so the record relate to each other in a Person table.
+cardinality can be 0 as a person can be never married, with N as upper limit as
+a person in theory can have multiple marriage for whatever reason
+
+Exercise 5-4
+This is a typical "fan trap". one might falsely deduce a work is involved a player
+given a certain concert.
+
