@@ -110,3 +110,9 @@ Exercise 5-4
 This is a typical "fan trap". one might falsely deduce a work is involved a player
 given a certain concert.
 
+To solve this it is best to introduce a new class "Work/Concert/Player", or follow
+the chapter example "appearpance". IN this class we have 1-1 relationship with all
+3 old table. Hence "Work/Concert/Player" is just for storing the possible combination.
+Which then can help solve the first two requirements. For the last requirement of player's
+fee in a particular concert, we need to add a new attribute "player_fee" in this new table.
+
