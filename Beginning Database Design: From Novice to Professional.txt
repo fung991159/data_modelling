@@ -116,3 +116,39 @@ the chapter example "appearpance". IN this class we have 1-1 relationship with a
 Which then can help solve the first two requirements. For the last requirement of player's
 fee in a particular concert, we need to add a new attribute "player_fee" in this new table.
 
+
+Ch.6 Generalization and Specialization
+1. Data modeling can involve class inheritance. Hmm this is getting very software
+engineering?
+2. if a attribute can be associate to either A or B. Then it is a case to use
+superclass to capture the things that is in common.
+3. When should we do inheritance? Depend on completness and accuray required
+by the project.
+4. a superclass usually should be an abstract class, i.e. it should not have object,
+it exist to be inherited. The reason is when we want to add more attirbute to any subclass,
+it won't affect the other subclass.
+5. generally changing database subclass is very difficult,so it is important to
+to get it right at start
+
+ex.6-1
+- change the customer end to 0: purchase without a customer would then "cash purchase",
+this involve minimal change, but it also make it hard to understand the purchase class.
+- keep customer end as 1, using dummy object "cash customer": data will be misrepresented
+in report. since "cash customer" contains multiple customers.
+- create subclass of "cash_customer" and "account_customer": it doesn't solve the issue at all,
+"cash_customer" is a blank object just like using a dummy object
+- create subclass of "cash_purchase" and "account_purchase": this is the most elegant solution,
+since both purchase share the common attributes of date and quantity, also it makes future new 
+type of Purchase (say online purchase) can be eaisly added.
+
+ex.6-2
+This is just changing the chapter example on "composite" design pattern. Fertilizer will have
+one to one relatinship with component, which is a parent class of fields (smallest unit) and
+composite(anything down to a field or up to entire section of multiple fields)
+
+ex.6-3
+Person can be subclassed into "members" and "staff". But to decide what type of a book it is,
+we need not subclass, instead we just need to link Book table to book_type table to indicate
+"reference_book"
+
+
