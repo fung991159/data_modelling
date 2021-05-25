@@ -151,4 +151,6 @@ Person can be subclassed into "members" and "staff". But to decide what type of 
 we need not subclass, instead we just need to link Book table to book_type table to indicate
 "reference_book"
 
+>> it should be Person doesn't need a subclass, it can be done with a Type table
+>> while book can also be done using a book type table, it can be done using subclass as well.
 
