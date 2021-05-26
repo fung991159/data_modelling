@@ -154,3 +154,65 @@ we need not subclass, instead we just need to link Book table to book_type table
 >> it should be Person doesn't need a subclass, it can be done with a Type table
 >> while book can also be done using a book type table, it can be done using subclass as well.
 
+
+Ch.7: From Data Model to relationship
+Finally this is something I expect when first reading this book, all those PK, FK, normal form stuff.
+
+1. a class is a table in database, with attributes as column / fields in the table. each
+row/ record is an instance of the class
+2. Primary Key: a field or combination of field that can uniquely identify a row in the table,
+it is possible to have multi field that can use to identify a row, which fields to use 
+is a question of normal form.
+3. surrogate key: a field that create specifically just for identify row uniquely. usually integer.
+4. concatenated key / composite key: combination of existing field that can uniquely identify row.
+Surely non of the the field is nullable.
+*** it isn't always best to use sk instead of ck, because:
+    a. sk doesn't necessarily means it is unique (can be due to existing sk update error, existing value
+        before the field has been made sk etc)
+    b. ck use business field that make sense when joining table
+sk is usually more peformant though
+5. Foreign Key is use to represent relationship between objects in data models, it is a field(s)
+that refers to PK in other table
+6. Referential Integrity: row / value in FK must exist in the FK's table. Hence it is not possible
+to have non-existing value in FK field.
+Representing data model in relatikonship:
+    a. 1-Many relationship: takes pk in 1 end and add as fk in many end.
+    b. Many-Many relationship: it isn't as common as first expect, usually a intermediate class should be
+    use to store missing information (hence turn it to 1 to many relatinship). The intermediate table will
+    take PK from both original table and use it as Composite Keys
+    c. 1-1 relationship: It is possible to add either table PK as FK in the other table.
+    Which table to add as FK depends on if all record should have compulsory association,
+    i.e. no null FK record if possible.
+    d. Inheritance: base class table store common attributes, child class table store child attributes only.
+    (this is kind of ungly if you ask me, author does mention this isn't "true" inhertance, agree)
+
+ex.7-1
+a) 
+    The data model shows a person can borrows multiple items
+(theortical unlimited, even at the same date). Each of this item,
+can be identified with its Title and Category related info.
+However, we cannot infer who's borrwed what item at any given date,
+since it is a many to many relationship between Person and Item.
+    If we wish to include this info, a "Person/Item" intermediate table
+need to be introduced, with "id" from "Person" and "copy_num" from "Item"
+as PK.
+b)
+Table "Person"
+ID (PK)
+last_name
+first_name
+
+Table "Item"
+copy_num (PK)
+title_num (FK)
+purchase_date
+
+Table "Title"
+title_num (PK)
+cat_num (FK)
+title
+author
+
+Table "Category"
+cat_num (PK)
+name
