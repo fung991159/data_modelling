@@ -26,14 +26,14 @@ Ch.3 Initial Requirements and Use Cases
     the problem first, implementing later
 2. it is vitally important to know what the data model need to provide, because it decide
     the complexity of the data model and how to implement it
-3. Not everything could be automated should be automated. Some task is better to have human 
+3. Not everything could be automated should be automated. Some task is better to have human
     involvement
-4. Scope a problem as small and tightly defined as possible in early stage, so it isn't too difficult 
+4. Scope a problem as small and tightly defined as possible in early stage, so it isn't too difficult
     to expand later when required. i.e Don't boil the entire ocean!
 5. think of the different use case, usually it involve input (user input?), output (report?).
 
 The exercise for this chapter is to understand the problem statment and design a solution for it.
-1. "dim_student" and "dim_date" are the dimension tables that store info relate to studnet and whether the day 
+1. "dim_student" and "dim_date" are the dimension tables that store info relate to studnet and whether the day
     is sport days. "fct_attendence" is the fact table that actually store the student attendence record.
 2. Use Case (input): Sport teacher can input whether a studnet attend class on a given day.
 3. Use Case (event): if the day is a sport day and student has the status of is_school_team. Then teacher
@@ -43,15 +43,15 @@ The exercise for this chapter is to understand the problem statment and design a
 
 
 Ch.4 Review of Data Models
-1. Optionality: is it 0 or 1? good example of two table, a. student and b. courses. 
+1. Optionality: is it 0 or 1? good example of two table, a. student and b. courses.
 Here we must define clearly what exactly is a "student",
-can a "student" exist without taking any course (studnet that is no longer actively studying). There is no 
+can a "student" exist without taking any course (studnet that is no longer actively studying). There is no
 "right" answer to the question, just depend on client/ user requirement.
-2. A Cardinality of 1: is there any exception not catered by the data model? 
+2. A Cardinality of 1: is there any exception not catered by the data model?
 example of a Weather object / table. The relationship with an Visit object is usually one to one,
 but it is possible to have multiple weather in any given day? Should we care?
-3. often time a one to one relatioship cannot cater for the need to store history, as only one value can be 
-    store. 
+3. often time a one to one relatioship cannot cater for the need to store history, as only one value can be
+    store.
 4. Many - Many: if we want to store how two instance of a class relate to each other (i.e. the history between table),
     we need to introduce a new intermediate class, where by the relationship between the old objects are 1 to many.
     this intermediate class can sometime be hard to name, so it can be the concat of two existing table.
@@ -62,7 +62,7 @@ Exercise 4-1
 At first glance an Author can write multiple books, so it is a one to many relationship. But can a "author" write 0 book?
 It depends on how we define a book, do we count book that haven't or failed to be publish? Do we count research paper as "book"?
 
-From the other perspective, can a book have no author? 
+From the other perspective, can a book have no author?
 I think so, e.g. some historical text that no one know who the original author is, say Bible.
 
 Hence the relationship of this simple data model is base on the scope of the problem.
@@ -82,16 +82,16 @@ Ch.5 Developing a Data Model
     b. if this information is extendable, i.e. adding new related attirbutes
 3. it is best to avoid storing redundant info on different class. because:
     a. it is prone to manual update error
-    b. it allows for more than one "route" to access the same data, sometime it 
+    b. it allows for more than one "route" to access the same data, sometime it
     can be inconsistent.
 4. "fan trap": class with two relatinships with many cardinality at both outside ends.
         an example of "Employee"-"Division"-"Group" was given. A division can have multiple
-        employees, at the same time a division can also be in multiple group. 
+        employees, at the same time a division can also be in multiple group.
         There is no way one can tell a employee belongs to which group.
 5. "chasm trap": when a record cannot be chained from Class A to B then C. Because
     a record doesn't present in B, the chain is "broken"
 6. self relatioship: when each record in the class is related to each other (self join scenario)
-7. when information is depend on objects of more than two classes, it makes 
+7. when information is depend on objects of more than two classes, it makes
     sense to introduce a new class
 
 Exercise 5-1
@@ -138,7 +138,7 @@ in report. since "cash customer" contains multiple customers.
 - create subclass of "cash_customer" and "account_customer": it doesn't solve the issue at all,
 "cash_customer" is a blank object just like using a dummy object
 - create subclass of "cash_purchase" and "account_purchase": this is the most elegant solution,
-since both purchase share the common attributes of date and quantity, also it makes future new 
+since both purchase share the common attributes of date and quantity, also it makes future new
 type of Purchase (say online purchase) can be eaisly added.
 
 ex.6-2
@@ -161,7 +161,7 @@ Finally this is something I expect when first reading this book, all those PK, F
 1. a class is a table in database, with attributes as column / fields in the table. each
 row/ record is an instance of the class
 2. Primary Key: a field or combination of field that can uniquely identify a row in the table,
-it is possible to have multi field that can use to identify a row, which fields to use 
+it is possible to have multi field that can use to identify a row, which fields to use
 is a question of normal form.
 3. surrogate key: a field that create specifically just for identify row uniquely. usually integer.
 4. concatenated key / composite key: combination of existing field that can uniquely identify row.
@@ -187,7 +187,7 @@ Representing data model in relatikonship:
     (this is kind of ungly if you ask me, author does mention this isn't "true" inhertance, agree)
 
 ex.7-1
-a) 
+a)
     The data model shows a person can borrows multiple items
 (theortical unlimited, even at the same date). Each of this item,
 can be identified with its Title and Category related info.
@@ -216,3 +216,83 @@ author
 Table "Category"
 cat_num (PK)
 name
+
+
+Ch.8 Normalization
+Normalization is a way to check fields to ensure they are in the right table.
+consider it a rule of thumbs / guide on how a attribute should belongs to
+a table
+
+if table is not normalized, it is proned to:
+    a. update anomalies: update in mulitple tables instead of one
+    b. insertion problems: field are always nullable, so nothing can be used as PK
+    c. delete a row will delete both unwanted info and wanted info 
+    (since all attrributes cramped into a single table)
+
+Functional Dependency: "if i know the value for a attribute(s), I can 
+uniquely tell the value of other attribute(s)", e.g. EmployeeID tells Employee name
+
+both class model and ffunctional dependencies can help use decide if the data
+model is right
+
+1. key: fields that functionally determine all other fields in the table
+2. Primary Key has no subset of fields that is also a key
+    human language: PK is the minimal required to get all other fields
+    in the table, no unnecessary fields.
+
+"The key, the whole key, and nothing but the key"
+
+(The Key)
+1NF: Multiple values should NOT be keep in one field. So that PK can functionally
+    determine the field value
+Remedy:
+    create a new table to house value in multi-value field, with PK of orignial table
+    as FK
+
+(The Whole Key)
+2NF: 1NF + we need ALL fields in the key to determine non-key fields. i.e. pk
+    should have no unnecessary fields
+Remedy:
+    decomposition - create new table to hosue non-key fields that is unrelated
+                    to PK
+
+(Nothing but the key)
+3NF: 2NF + all non-key fields need to depends on PK.
+Remedy:
+    create a new table to house non-key fields that are dependent on field
+    that isn't a PK.
+
+I find 2NF and 3NF very similar, 2NF is on the key itself, while 3NF is more
+on the non-key fields.
+
+Boyce-Codd Normal form: a table with every determinant could be a PK.
+
+Ex8-1
+a)  human input error can occur in this big table, such as field "FarmName",
+    Also deleting a row will delete other info that we might need, say Insect
+    count in a given field
+b) Following are the functional dependencies pair:
+    1. FarmID > FarmName
+    2. Visit > Date (a visit per day, given the table)
+    3. Visit > FarmID (a farm per visit)
+    4. SampleID, VisitID > field
+    5. Sample, Insect > count
+c) given above (visitID, SampleId, Insect) can functionally determine all other
+    fields, hence it is a PK
+d) the table already satisfied 1NF, 2NF. 3NF is achieved by breaking
+Date and Farm into it's own table (FarmName can be determine by FarmID, which isn't in the PK).
+
+Farm
+(VisitID, Sample, Insect) (FK)
+FarmID (PK)
+FarmName
+Field
+
+Visit
+(VisitID, SampleID, Insect) (PK)
+Date
+
+dim_date
+(VisitID, SampleID, Insect) (FK)
+Date
+
