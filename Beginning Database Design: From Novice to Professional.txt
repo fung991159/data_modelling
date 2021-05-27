@@ -296,3 +296,5 @@ dim_date
 (VisitID, SampleID, Insect) (FK)
 Date
 
+Ch.9 - 12
+These are no longer database design related topic, hence will not cover here.
