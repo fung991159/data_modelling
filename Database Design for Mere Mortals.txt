@@ -1,0 +1,19 @@
+Ch.1 - Ch.4 introduce basic terminology and flow of designing a database, so just skip that.
+
+Ch.5 Starting the Process
+"Interview" as in talking with data user on how data interrelate with each other
+2. Establish guideline before interviewing client
+    a. make participant aware of your intention
+    b. give participant a motivation to take part in the interview,
+    show appreciation and let them know their response is valuable to the entire design project
+    c. take the role of arbitrator if (data structure related ) dispute arise between participants
+
+Mission statment: declare the specific purpose of the database,
+                  it should be only a few sentence in length and should
+                  not focus on micro task.
+
+Mission objective: general tasks supported by data maintained in the new database.
+                    Each objective should be one task.
+
+
+
