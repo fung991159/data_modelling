@@ -16,4 +16,11 @@ Mission objective: general tasks supported by data maintained in the new databas
                     Each objective should be one task.
 
 
+Ch.6 Analyzing the Current database
+3 steps in analysis process:
+    a. how is data collected?
+    b. manner the information is presented
+    c. conduct interviews with users and management
+
+
 
