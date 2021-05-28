@@ -23,4 +23,23 @@ Ch.6 Analyzing the Current database
     c. conduct interviews with users and management
 
 
+Ch.7 Establishing Table Structures
+a. start off with a preliminary table list, then go throught this table list using below
+    item order:
+    1. preliminary field list
+    2. list of subjects from interviews
+    3. mission objectives
+b. After we have the prelimiary table list from above, we add table type and 
+    table desc to turn it into Final Table list.
+
+table type are:
+    1. data table: event / facts
+    2. linking table: intermediate table for many to many relationship
+    3. subset table: dimension table that describe data table
+    4. validation table
+
+c. define table description: statment that accurately defines the table
+d. associate preliminary fields list to final table list
+
+
 
