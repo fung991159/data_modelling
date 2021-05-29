@@ -48,3 +48,7 @@ But the author placed greate effort in not mentioning techincal term such as the
 this actually make it harder to understand IMO.
 
 
+Ch.9 Field Specifications
+Basically is is about the metadata for all fields in database. Though in modern era we
+have data catalog that could serve this purpose better. At least the idea of knowing all fields
+characteristics is an important concept
