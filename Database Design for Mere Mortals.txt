@@ -52,3 +52,10 @@ Ch.9 Field Specifications
 Basically is is about the metadata for all fields in database. Though in modern era we
 have data catalog that could serve this purpose better. At least the idea of knowing all fields
 characteristics is an important concept
+
+
+Ch.10 Table Relationships
+    1-1 relationship: almost always relate to a subset table
+    1-mamy: most common
+    many-many: 2nd common, but should be aid with intermediate table
+
