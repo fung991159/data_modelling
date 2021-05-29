@@ -59,3 +59,15 @@ Ch.10 Table Relationships
     1-mamy: most common
     many-many: 2nd common, but should be aid with intermediate table
 
+
+Ch.11 Business Rules
+this is on putting constraint on table base on business requirement
+
+
+Ch.12 View
+Basical walk through on what and why for using view, nothing new
+
+
+Ch.13 Reviewing Data Integrity
+Final review on the database after it is done. looking at table, field, relationship integrity etc
+
