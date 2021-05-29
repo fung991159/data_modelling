@@ -42,4 +42,9 @@ c. define table description: statment that accurately defines the table
 d. associate preliminary fields list to final table list
 
 
+Ch.8 Keys
+This chapter go throught primary key, foreign key, surrogate key and non-key fields
+But the author placed greate effort in not mentioning techincal term such as the "normal form",
+this actually make it harder to understand IMO.
+
 
